@@ -1,0 +1,14 @@
+package piscine
+
+func Max(a []int) int {
+	if len(a) == 0 {
+		return 0
+	}
+	maxValue := a[0]
+	for i := 1; i < len(a); i++ {
+		if a[i] > maxValue {
+			maxValue = a[i]
+		}
+	}
+	return maxValue
+}
