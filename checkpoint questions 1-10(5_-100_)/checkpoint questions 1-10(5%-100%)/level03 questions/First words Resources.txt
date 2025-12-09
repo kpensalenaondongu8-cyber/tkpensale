@@ -1,0 +1,62 @@
+First words
+Resources
+
+We provide you with some content to get started smoothly, check it out!
+
+    Video DOM JS - createElement & append
+    Video Set an element's className
+    Video DOM JS - Set an element's properties
+    Video DOM JS - Add an event listener to an element
+    Memo DOM JS
+
+Instructions
+
+Now that you know how to make your creation move, what about making it communicate its first words to the world?
+
+Let's put a second button in the top right corner of the page, that will add some text when clicked. Add it in the HTML structure:
+
+<button id="speak-button">Click me to speak</button>
+
+Add the button style in the CSS file:
+
+button#speak-button {
+  top: 100px;
+}
+
+Also add this class to style the text we will add:
+
+.words {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+In the JS file, like in the previous exercise, get the HTML button element with id speak-button and add an event listener on click event, triggering a function that will:
+
+    create a new HTML element of type div
+    set its text content to "Hello there!"
+    set its className to words, that we just added earlier in the CSS
+    use the append method to add it inside the torso element
+
+Code examples
+
+Create a new element and add it inside the body:
+
+// create a new `div` element
+const div = document.createElement('div') // the argument passed (string) is the html tag
+
+// select the `body` and add the new `div` inside it
+const body = document.querySelector('body')
+body.append(div)
+
+Expected output
+
+This is what you should see in the browser.
+Notions
+
+    getElementById
+    addEventListener / click event
+    createElement
+    Text content of a HTML element
+    className
+    append
+

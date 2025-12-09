@@ -1,0 +1,24 @@
+package piscine
+
+func LastWord(s string) string {
+	last := ""
+	current := ""
+	for _, r := range s {
+		if r == ' ' {
+			if current != "" {
+				last = current
+				current = ""
+			}
+		} else {
+			current += string(r)
+		}
+	}
+	if current != "" {
+		last = current
+	}
+	if last != "" {
+		return last + "\n"
+	}
+	return ""
+}
+

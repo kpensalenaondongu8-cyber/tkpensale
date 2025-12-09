@@ -1,0 +1,27 @@
+package piscine
+
+func FirstWord(s string) string {
+	started := false
+	result := ""
+
+	if len(s) == 0 {
+		return "\n"
+	}
+
+	for _, r := range s {
+		if r == ' ' {
+			if started {
+				break
+			}
+			continue
+		}
+		started = true
+		result += string(r)
+	}
+
+	if result != "" {
+		result += "\n"
+	}
+
+	return result
+}

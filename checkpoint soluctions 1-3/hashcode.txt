@@ -1,0 +1,14 @@
+package piscine
+
+func HashCode(dec string) string {
+	res := ""
+	for _, r := range dec {
+		if h := (int(r) + len(dec)) % 127; h < 33 {
+			res += string(h + 33)
+		} else {
+			res += string(h)
+		}
+	}
+	return res
+}
+

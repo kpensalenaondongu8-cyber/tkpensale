@@ -1,0 +1,79 @@
+level 01
+5% only1
+5% onlya
+5% onlyb
+5% onlyf
+5% onlyz
+
+level 02
+10% checknumber
+10% countalpha
+10% countcharacter
+10% printif
+10% printifnot
+10% rectperimeter
+10% retainfirsthalf
+
+level 03
+20% cameltosnakecase
+20% digitlen
+20% firstword
+20% fishandchips
+20% gcd
+20% hashcode
+20% lastword
+20% repeatalpha
+20% searchreplace
+
+level 04
+35% cleanstr
+35% expandstr
+35% findprevprime
+35% fromto
+35% iscapitalized
+35% itoa
+35% printmemory
+35% printrevcomb
+35% thirdtimeisacharm
+35% weareunique
+35% zipstring
+
+level 05
+50% addprimesum
+50% canjump
+50% chunk
+50% concatalternate
+50% concatslice
+50% fprime
+50% hiddenp
+50% inter
+50% reversestrcap
+50% saveandmiss
+50% union
+50% wdmatch
+
+level 06
+65% fifthandskip
+65% notdecimal
+65% revconcatalternate
+65% slice
+
+level 07
+75% findpairs
+75% revwstr
+75% rostring
+75% wordflip
+
+level 08
+85% itoabase
+85% options
+85% piglatin
+85% romannumbers
+
+level 09
+95% brackets
+95% rpncalc
+
+level 10
+100% brainfuck
+100% grouping
