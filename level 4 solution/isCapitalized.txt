@@ -1,0 +1,24 @@
+package piscine
+
+func IsCapitalized(s string) bool {
+    if len(s) == 0 {
+        return false
+    }
+
+    inWord := false
+    for _, r := range s {
+        if r == ' ' || r == '\t' {
+            inWord = false
+            continue
+        }
+        if !inWord {
+            // start of a new word
+            if r >= 'a' && r <= 'z' {
+                return false
+            }
+            inWord = true
+        }
+    }
+    return true
+}
+

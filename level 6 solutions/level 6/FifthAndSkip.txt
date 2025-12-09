@@ -1,0 +1,42 @@
+package piscine
+
+func FifthAndSkip(str string) string {
+    if len(str) == 0 {
+        return "\n"
+    }
+    // less than 5 chars
+    count := 0
+    for _, c := range str {
+        if c != ' ' {
+            count++
+        }
+    }
+    if count < 5 {
+        return "Invalid Input\n"
+    }
+
+    result := ""
+    curr := ""
+    skip := false
+    for _, c := range str {
+        if c == ' ' {
+            continue
+        }
+        if skip {
+            skip = false
+            continue
+        }
+        curr += string(c)
+        if len(curr) == 5 {
+            result += curr + " "
+            curr = ""
+            skip = true
+        }
+    }
+    result += curr
+    if result[len(result)-1] == ' ' {
+        result = result[:len(result)-1]
+    }
+    return result + "\n"
+}
+

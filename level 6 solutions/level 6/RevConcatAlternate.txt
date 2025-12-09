@@ -1,0 +1,30 @@
+package piscine
+
+func RevConcatAlternate(slice1, slice2 []int) []int {
+    i := len(slice1) - 1
+    j := len(slice2) - 1
+    res := []int{}
+
+    // decide who starts
+    first1 := len(slice1) >= len(slice2)
+
+    for i >= 0 || j >= 0 {
+        if first1 && i >= 0 {
+            res = append(res, slice1[i])
+            i--
+        } else if !first1 && j >= 0 {
+            res = append(res, slice2[j])
+            j--
+        }
+        if j >= 0 {
+            res = append(res, slice2[j])
+            j--
+        }
+        if i >= 0 {
+            res = append(res, slice1[i])
+            i--
+        }
+    }
+    return res
+}
+

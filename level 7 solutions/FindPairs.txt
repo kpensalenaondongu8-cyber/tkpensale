@@ -1,0 +1,91 @@
+package main
+
+import (
+    "os"
+    "strings"
+)
+
+func main() {
+    if len(os.Args) != 3 {
+        os.Stdout.WriteString("Invalid input.\n")
+        return
+    }
+    arrStr, targetStr := os.Args[1], os.Args[2]
+
+    if !strings.HasPrefix(arrStr, "[") || !strings.HasSuffix(arrStr, "]") {
+        os.Stdout.WriteString("Invalid input.\n")
+        return
+    }
+    parts := strings.Split(arrStr[1:len(arrStr)-1], ",")
+    nums := []int{}
+    for _, p := range parts {
+        p = strings.TrimSpace(p)
+        if p == "" {
+            continue
+        }
+        sign, val := 1, 0
+        if p[0] == '-' {
+            sign, p = -1, p[1:]
+        }
+        for i := 0; i < len(p); i++ {
+            if p[i] < '0' || p[i] > '9' {
+                os.Stdout.WriteString("Invalid number: " + p + "\n")
+                return
+            }
+            val = val*10 + int(p[i]-'0')
+        }
+        nums = append(nums, sign*val)
+    }
+
+    sign, tval := 1, 0
+    if targetStr[0] == '-' {
+        sign, targetStr = -1, targetStr[1:]
+    }
+    for i := 0; i < len(targetStr); i++ {
+        if targetStr[i] < '0' || targetStr[i] > '9' {
+            os.Stdout.WriteString("Invalid target sum.\n")
+            return
+        }
+        tval = tval*10 + int(targetStr[i]-'0')
+    }
+    tval *= sign
+
+    pairs := [][]int{}
+    for i := 0; i < len(nums); i++ {
+        for j := i + 1; j < len(nums); j++ {
+            if nums[i]+nums[j] == tval {
+                pairs = append(pairs, []int{i, j})
+            }
+        }
+    }
+    if len(pairs) == 0 {
+        os.Stdout.WriteString("No pairs found.\n")
+        return
+    }
+
+    out := "Pairs with sum " + Itoa(tval) + ": ["
+    for i, pr := range pairs {
+        out += "[" + Itoa(pr[0]) + " " + Itoa(pr[1]) + "]"
+        if i < len(pairs)-1 {
+            out += " "
+        }
+    }
+    os.Stdout.WriteString(out + "]\n")
+}
+
+func Itoa(n int) string {
+    if n == 0 {
+        return "0"
+    }
+    sign := ""
+    if n < 0 {
+        sign, n = "-", -n
+    }
+    out := ""
+    for n > 0 {
+        out = string('0'+(n%10)) + out
+        n /= 10
+    }
+    return sign + out
+}
+

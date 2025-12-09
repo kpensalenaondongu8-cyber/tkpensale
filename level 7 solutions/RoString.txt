@@ -1,0 +1,30 @@
+package main
+
+import (
+    "os"
+    "strings"
+)
+
+func main() {
+    if len(os.Args) != 2 {
+        os.Stdout.WriteString("\n")
+        return
+    }
+    s := strings.TrimSpace(os.Args[1])
+    if s == "" {
+        os.Stdout.WriteString("\n")
+        return
+    }
+    words := strings.Fields(s)
+    if len(words) == 0 {
+        os.Stdout.WriteString("\n")
+        return
+    }
+    if len(words) == 1 {
+        os.Stdout.WriteString(words[0] + "\n")
+        return
+    }
+    out := strings.Join(words[1:], " ") + " " + words[0] + "\n"
+    os.Stdout.WriteString(out)
+}
+

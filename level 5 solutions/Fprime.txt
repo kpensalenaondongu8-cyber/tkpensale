@@ -1,0 +1,53 @@
+package main
+
+import (
+    "os"
+)
+
+func main() {
+    if len(os.Args) != 2 {
+        return
+    }
+    n := 0
+    for _, c := range os.Args[1] {
+        if c < '0' || c > '9' {
+            return
+        }
+        n = n*10 + int(c-'0')
+    }
+    if n <= 1 {
+        return
+    }
+    first := true
+    for i := 2; i*i <= n; i++ {
+        for n%i == 0 {
+            if !first {
+                os.Stdout.WriteString("*")
+            }
+            os.Stdout.WriteString(Itoa(i))
+            n /= i
+            first = false
+        }
+    }
+    if n > 1 {
+        if !first {
+            os.Stdout.WriteString("*")
+        }
+        os.Stdout.WriteString(Itoa(n))
+    }
+    os.Stdout.WriteString("\n")
+}
+
+// simple Itoa
+func Itoa(n int) string {
+    if n == 0 {
+        return "0"
+    }
+    result := ""
+    for n > 0 {
+        result = string('0'+(n%10)) + result
+        n /= 10
+    }
+    return result
+}
+

@@ -1,0 +1,39 @@
+package piscine
+
+func NotDecimal(dec string) string {
+    if len(dec) == 0 {
+        return "\n"
+    }
+    dot := -1
+    for i := 0; i < len(dec); i++ {
+        if dec[i] == '.' {
+            dot = i
+            break
+        }
+    }
+    if dot == -1 {
+        return dec + "\n"
+    }
+    // check if only zero after dot
+    allZero := true
+    for i := dot + 1; i < len(dec); i++ {
+        if dec[i] != '0' {
+            allZero = false
+            break
+        }
+    }
+    if allZero {
+        return dec[:dot] + "\n"
+    }
+    // validate digits
+    for i := 0; i < len(dec); i++ {
+        if dec[i] == '.' || dec[i] == '-' {
+            continue
+        }
+        if dec[i] < '0' || dec[i] > '9' {
+            return dec + "\n"
+        }
+    }
+    return dec[:dot] + dec[dot+1:] + "\n"
+}
+

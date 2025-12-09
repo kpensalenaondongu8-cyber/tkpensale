@@ -1,0 +1,27 @@
+package piscine
+
+func ConcatAlternate(slice1, slice2 []int) []int {
+    res := []int{}
+    i, j := 0, 0
+    // decide which slice starts
+    first1 := len(slice1) >= len(slice2)
+    for i < len(slice1) || j < len(slice2) {
+        if first1 && i < len(slice1) {
+            res = append(res, slice1[i])
+            i++
+        } else if !first1 && j < len(slice2) {
+            res = append(res, slice2[j])
+            j++
+        }
+        if j < len(slice2) {
+            res = append(res, slice2[j])
+            j++
+        }
+        if i < len(slice1) {
+            res = append(res, slice1[i])
+            i++
+        }
+    }
+    return res
+}
+
