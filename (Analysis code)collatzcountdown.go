@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package piscine
 
 func CollatzCountdown(start int) int {
 	if start <= 0 {
@@ -17,9 +15,4 @@ func CollatzCountdown(start int) int {
 		steps++
 	}
 	return steps
-}
-
-func main(){
-fmt.Println(CollatzCountdown(32))
-fmt.Println(CollatzCountdown(0))
 }
